@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In and Sign up</title>
+  <link rel="stylesheet" href="sign.css">
+  <script src="https://kit.fontawesome.com/09db3ac976.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h1 id="title">Sign Up</h1>
+      <form action="#" onsubmit="return validateForm()">
+        <div class="input-group">
+          <div class="input-field" id="nameField">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Name" required>
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" id="emailField" placeholder="Email" required>
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="passwordField" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$" title="Password should be of 10 letters using capital and small alphabets including numbers and special characters" required>
+          </div>
+          <p>Lost password <a href="#">Click Here!</a></p>
+        </div>
+        <div class="btn-field">
+          <button type="submit" id="signupBtn">Sign up</button>
+          <button type="submit" id="signinBtn" class="disable">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let signupBtn = document.getElementById("signupBtn");
+    let signinBtn = document.getElementById("signinBtn");
+    let nameField = document.getElementById("nameField");
+    let title = document.getElementById("title");
+
+    signinBtn.onclick = function(){
+      nameField.style.maxHeight = "0";
+      title.innerHTML = "Sign In";
+      signupBtn.classList.add("disable");
+      signinBtn.classList.remove("disable");
+    }
+    signupBtn.onclick = function(){
+      nameField.style.maxHeight = "60px";
+      title.innerHTML = "Sign Up";
+      signupBtn.classList.remove("disable");
+      signinBtn.classList.add("disable");
+    }
+
+    function validateForm() {
+      let emailField = document.getElementById("emailField");
+      let passwordField = document.getElementById("passwordField");
+      let email = emailField.value;
+      let password = passwordField.value;
+
+      // Dummy email and password for demo purposes
+      let dummyEmail = "example@example.com";
+      let dummyPassword = "Password123@"; // Dummy password should match the pattern
+
+      if (title.innerHTML === "Sign In") {
+        // If it's sign-in and the email or password doesn't match
+        if (email !== dummyEmail || password !== dummyPassword) {
+          alert("Wrong credentials");
+          return false; // Prevent form submission
+        }
+      }
+
+      // If all validations pass, return true to submit the form
+      return true;
+    }
+  </script>
+</body>
+</html>
