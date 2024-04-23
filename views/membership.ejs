@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subcription page</title>
+    <style>
+       *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+       }
+       .container{
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+       } 
+       .col-1{
+        flex-basis: 50%;
+        flex-grow: 1;
+        background-image: linear-gradient(rgba(58, 56, 56, 0.8),rgba(0,0,0,0.8)),url(../images/back.jpg);
+        background-size: cover;
+        background-position: center;
+        min-height: inherit;
+        padding: 60px;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        flex-direction: column;
+        color: #fff;
+        
+       }
+
+       
+       .col-2{
+        flex-basis: 50%;
+        flex-grow: 1;
+        padding: 50px 80px  ;
+        
+       }
+       .col-1 ul{
+        list-style: none;
+
+       }
+       .col-1 ul li{
+        display: flex;
+        align-items: center;
+        margin: 12px 0;
+
+        
+       }
+       .col-1 ul li img{
+        width: 20px;
+        margin-right: 15px;
+
+       }
+       .col-1 h1 span {
+        font-size: 40px;
+        color: #ff004f;
+       
+        
+       }
+       h2{
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        margin-top: -50px;
+        margin-bottom: 35px;
+       }
+       h2 img{
+        width: 26px;
+        margin-right: 10px;
+
+       }
+
+       form{
+        width: 400px;
+        color: #333;
+        font-weight: 14px;
+        font-size: 14px;
+       }
+
+       label{
+        display: block;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 20px 5px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #999;
+        cursor: pointer;
+
+
+       }
+       label span{
+        flex: 1;
+        margin-left: 15px;
+        font-size: 34px;
+        font-weight: 600;
+        color: #333;
+
+       }
+       label span small{
+        font-size: 18px;
+       }
+       input[type="radio"]:checked + span{
+        color: #ff004f;
+       }
+
+       input[type="text"],input[type="email"], input[type="password"]{
+        width:100%;
+        background: transparent;
+        padding: 7px 10px;
+        outline: none;
+        border: 1px solid #333;
+        border-radius: 4px;
+        margin: 12px 0;
+       }
+
+       form button{
+        background: #ff004f;
+        color: #fff;
+        font-size: 16px;
+        padding: 12px 50px;
+        margin: 20px 0;
+        border: 0;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.5;
+       }
+
+       form button:hover{
+        transform: translateY(-5px);
+
+       }
+       
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="col-1">
+        <h1><span> Fit-Fusion</span></h1>
+      
+        <ul>
+            <li><img src="../images/icon.png"> Fit Build and grow.</li>
+            <li><img src="../images/icon.png">Fit Build and grow.</li>
+            <li><img src="../images/icon.png"> Fit Build and grow.</li>
+            <li><img src="../images/icon.png"> Fit Build and grow.</li>
+        </ul>
+   </div>
+    <div class="col-2">
+
+        <h2> <img src="../images/icon.png">Our plans</h2>
+      
+        <form action="/register" method="post">
+            <label for="free">
+                <input type="radio" name="plan" value="Free" id="free">
+                <span>FREE</span> ONE MONTH
+            </label>
+            <label for="paid">
+                <input type="radio" name="plan" value="Paid" id="paid">
+                <span>$15 <small>/month</small></span> NO LIMITS
+            </label>
+            <br>
+            <p>YOUR NAME</p>
+            <input type="text" placeholder="Enter Your Name" name="name" required>
+            <p>EMAIL ADDRESS</p>
+            <input type="email" placeholder="Enter your email id" name="email" required>
+            <p>PASSWORD</p>
+            <input type="password" placeholder="Enter password (min 6 characters)" name="password" required minlength="6">
+            <br>
+            <button type="submit" id="subscribeButton">Subscribe</button>
+        </form>
+        
+        <script>
+            function validateForm() {
+                var name = document.forms["registerForm"]["name"].value;
+                var email = document.forms["registerForm"]["email"].value;
+                var password = document.forms["registerForm"]["password"].value;
+                
+                if (name === "" || email === "" || password === "") {
+                    alert("Please fill out all fields.");
+                    return false;
+                }
+                if (!email.includes("@gmail.com")) {
+                    alert("Please enter a valid Gmail address.");
+                    return false;
+                }
+                if (password.length < 6) {
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+                return true;
+            }
+        
+            document.getElementById("registerForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevents default form submission behavior
+                if (validateForm()) {
+                    alert("Subscribed successfully!");
+                    document.getElementById("registerForm").reset(); // Reset form fields after successful submission
+                }
+            });
+        </script>
+        
+
+        
+    </div>
+</div>
+
+    
+</body>
+</html>
